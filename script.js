@@ -1,15 +1,21 @@
-alert("Buenos días, mi nombre es Maite y te ayudaré a elegir el mejor producto. ¿Cómo es tu nombre? ");
-
-let nombre = prompt("Por favor, ingresá tu nombre: ");
-
-function saludar(){
-    alert("Bienvenido/a " + nombre + " a EstePan!");
+//Simulador para calcular el monto total de tu compra
+function calcularPrecio (precioPan, cantidadPan, porcentajeDescuento, costoEnvio) {
+    //calculo los descuentos
+    let descuento = (precioPan * porcentajeDescuento) / 100;
+    //se lo aplico al precio
+    let precioConDescuento = precioPan - descuento;
+    //retorno el precio final con descuento y costo de envio, multiplicado por la cantidad de panes
+    return (precioConDescuento * cantidadPan) + costoEnvio;
 }
 
-saludar();
+const envio = 100; //valor aproximado del costo de envio promedio
 
-alert("Ahora, necesito que me digas un número del 1 al 50, y te ganarás un beneficio: ");
+//le pedimos al usuario el precio del pan, la cantidad y el porcentaje del descuento
+let pan = parseFloat(prompt("Ingrese el precio del pan que desea comprar:"));
+let cantidad = parseInt(prompt("Ingrese la cantidad de unidades que desea comprar:"));
+let descuento = parseInt(prompt("Ingresa tu cupón de descuento:")) //los cupones en este caso serian los porcentajes de descuento, lo pongo asi para que quede mas visual
 
-let numero = parseInt(prompt("Ingresa un número del 1 al 50"));
-
-alert("Excelente, recibiste un descuento de:  " + numero + "  %.");
+//llamamos a la funcion y luego mostramos el precio final por alert
+let precioFinal = calcularPrecio(pan, cantidad, descuento, envio);
+alert("El precio total de tu compra es $" + precioFinal);
+alert("¡Que lo disfrutes!");

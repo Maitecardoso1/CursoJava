@@ -1,0 +1,8 @@
+@mixin btnGeneral($bk-color){
+    padding: 10px 30px;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #fff;
+    background: $bk-color;
+}
