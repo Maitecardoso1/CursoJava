@@ -1,21 +1,106 @@
-//Simulador para calcular el monto total de tu compra
-function calcularPrecio (precioPan, cantidadPan, porcentajeDescuento, costoEnvio) {
-    //calculo los descuentos
-    let descuento = (precioPan * porcentajeDescuento) / 100;
-    //se lo aplico al precio
-    let precioConDescuento = precioPan - descuento;
-    //retorno el precio final con descuento y costo de envio, multiplicado por la cantidad de panes
-    return (precioConDescuento * cantidadPan) + costoEnvio;
+const listaPanes = [
+    {
+        nombre: "Liviano",
+        precio: "250$",
+        peso: "400 grs",
+    },
+    {
+        nombre: "Artesano",
+        precio: "350$",
+        peso: "500 grs",
+    },
+    {
+        nombre: "Pancho",
+        precio: "200$",
+        peso: "300 grs",
+    },
+    {
+        nombre: "Hamburguesa",
+        precio: "200$",
+        peso: "300 grs",
+    },
+]
+
+let accion = ""
+
+while (accion != "SALIR"){
+    accion = prompt("Ingrese COMPRAR|VER|AGREGAR|BORRAR|SALIR")
+    switch (accion){
+        case "COMPRAR":
+            comprarPan()
+            break;
+        case "VER":
+            verPan()
+            break;
+        case "AGREGAR":
+            agregarPan()
+            break;
+        case "BORRAR":
+            borrarPan()
+            break;
+        case "SALIR":
+            alert("Estoy saliendo")
+            break;
+        default:
+            alert("Ingrese una acción válida")
+            break;
+    }
 }
 
-const envio = 100; //valor aproximado del costo de envio promedio
+function comprarPan(){
+    let panElegido = prompt("Ingrese el nombre del pan comprar")
+    const panBuscado = listaPanes.find((pan)=>{
+        return pan.nombre == panElegido
+    })
+    if(panBuscado){
+        console.log("Compré el siguiente pan:")
+        console.log(panBuscado)
+    } else {
+        console.log("No se encontró el pan")
+    }
+}
 
-//le pedimos al usuario el precio del pan, la cantidad y el porcentaje del descuento
-let pan = parseFloat(prompt("Ingrese el precio del pan que desea comprar:"));
-let cantidad = parseInt(prompt("Ingrese la cantidad de unidades que desea comprar:"));
-let descuento = parseInt(prompt("Ingresa tu cupón de descuento:")) //los cupones en este caso serian los porcentajes de descuento, lo pongo asi para que quede mas visual
+function verPan(){
+    listaPanes.forEach((pan)=>{
+        alert(`Nombre: ${pan.nombre} Precio: ${pan.precio} Peso: ${pan.peso}`)
+    })
+}
 
-//llamamos a la funcion y luego mostramos el precio final por alert
-let precioFinal = calcularPrecio(pan, cantidad, descuento, envio);
-alert("El precio total de tu compra es $" + precioFinal);
-alert("¡Que lo disfrutes!");
+function agregarPan(){
+    let nuevoNombre = prompt("Ingrese el nombre del pan:")
+    let nuevoPrecio = prompt("Ingrese el precio del pan:")
+    let nuevoPeso = prompt("Ingrese el peso del pan:")
+
+    const nuevoPan = {
+        nombre: nuevoNombre,
+        precio: nuevoPrecio,
+        peso: nuevoPeso,
+    }
+
+    const panBuscado = listaPanes.some((pan)=>{
+        return pan.nombre == nuevoNombre
+    })
+
+    if (panBuscado){
+        alert("El pan ya existe")
+    } else {
+        listaPanes.push(nuevoPan)
+    }
+}
+
+function borrarPan(){
+    let panElegido = prompt("Ingrese el nombre del pan a borrar")
+    let panEncontrado = 0
+
+    listaPanes.forEach((pan,lista)=>{
+        if (pan.nombre == panElegido){
+            panEncontrado = lista
+        }
+    }) 
+
+    if(panEncontrado){
+        listaPanes.splice(panEncontrado,1)
+    } else {
+        alert("No se encontró el pan")
+    }
+}
