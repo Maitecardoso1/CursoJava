@@ -1,5 +1,4 @@
-const listaPanes = [
-    {
+const listaPanes = [{
         nombre: "Liviano",
         precio: "250$",
         peso: "400 grs",
@@ -19,88 +18,127 @@ const listaPanes = [
         precio: "200$",
         peso: "300 grs",
     },
-]
+];
 
-let accion = ""
+let accion = "";
 
-while (accion != "SALIR"){
-    accion = prompt("Ingrese COMPRAR|VER|AGREGAR|BORRAR|SALIR")
-    switch (accion){
+while (accion != "SALIR") {
+    accion = prompt("Ingrese COMPRAR|VER|AGREGAR|BORRAR|SALIR");
+    switch (accion) {
         case "COMPRAR":
-            comprarPan()
+            comprarPan();
             break;
         case "VER":
-            verPan()
+            verPan();
             break;
         case "AGREGAR":
-            agregarPan()
+            agregarPan();
             break;
         case "BORRAR":
-            borrarPan()
+            borrarPan();
             break;
         case "SALIR":
-            alert("Estoy saliendo")
+            alert("Estoy saliendo");
             break;
         default:
-            alert("Ingrese una acción válida")
+            alert("Ingrese una acción válida");
             break;
     }
 }
 
-function comprarPan(){
-    let panElegido = prompt("Ingrese el nombre del pan comprar")
-    const panBuscado = listaPanes.find((pan)=>{
-        return pan.nombre == panElegido
-    })
-    if(panBuscado){
-        console.log("Compré el siguiente pan:")
-        console.log(panBuscado)
+function comprarPan() {
+    let panElegido = prompt("Ingrese el nombre del pan comprar");
+    const panBuscado = listaPanes.find((pan) => {
+        return pan.nombre == panElegido;
+    });
+    if (panBuscado) {
+        console.log("Compré el siguiente pan:");
+        console.log(panBuscado);
     } else {
-        console.log("No se encontró el pan")
+        console.log("No se encontró el pan");
     }
 }
 
-function verPan(){
-    listaPanes.forEach((pan)=>{
-        alert(`Nombre: ${pan.nombre} Precio: ${pan.precio} Peso: ${pan.peso}`)
-    })
+function verPan() {
+    listaPanes.forEach((pan) => {
+        alert(`Nombre: ${pan.nombre} Precio: ${pan.precio} Peso: ${pan.peso}`);
+    });
 }
 
-function agregarPan(){
-    let nuevoNombre = prompt("Ingrese el nombre del pan:")
-    let nuevoPrecio = prompt("Ingrese el precio del pan:")
-    let nuevoPeso = prompt("Ingrese el peso del pan:")
+function agregarPan() {
+    let nuevoNombre = prompt("Ingrese el nombre del pan:");
+    let nuevoPrecio = prompt("Ingrese el precio del pan:");
+    let nuevoPeso = prompt("Ingrese el peso del pan:");
 
     const nuevoPan = {
         nombre: nuevoNombre,
         precio: nuevoPrecio,
         peso: nuevoPeso,
-    }
+    };
 
-    const panBuscado = listaPanes.some((pan)=>{
-        return pan.nombre == nuevoNombre
-    })
+    const panBuscado = listaPanes.some((pan) => {
+        return pan.nombre == nuevoNombre;
+    });
 
-    if (panBuscado){
-        alert("El pan ya existe")
+    if (panBuscado) {
+        alert("El pan ya existe");
     } else {
-        listaPanes.push(nuevoPan)
+        listaPanes.push(nuevoPan);
     }
 }
 
-function borrarPan(){
-    let panElegido = prompt("Ingrese el nombre del pan a borrar")
-    let panEncontrado = 0
+function borrarPan() {
+    let panElegido = prompt("Ingrese el nombre del pan a borrar");
+    let panEncontrado = 0;
 
-    listaPanes.forEach((pan,lista)=>{
-        if (pan.nombre == panElegido){
-            panEncontrado = lista
+    listaPanes.forEach((pan, lista) => {
+        if (pan.nombre == panElegido) {
+            panEncontrado = lista;
         }
-    }) 
+    });
 
-    if(panEncontrado){
-        listaPanes.splice(panEncontrado,1)
+    if (panEncontrado) {
+        listaPanes.splice(panEncontrado, 1);
     } else {
-        alert("No se encontró el pan")
+        alert("No se encontró el pan");
     }
+}
+let stockProductos = [{
+    id: 1,
+    nombre: "Liviano",
+    precio: "250$",
+    peso: "400 grs",
+},
+{
+    id: 2,
+    nombre: "Artesano",
+    precio: "350$",
+    peso: "500 grs",
+},
+{
+    id: 3,
+    nombre: "Pancho",
+    precio: "200$",
+    peso: "300 grs",
+},
+{
+    nombre: "Hamburguesa",
+    precio: "200$",
+    peso: "300 grs",
+},
+];
+
+let carritoDeCompras = [];
+
+const Productos = document.getElementById("productos");
+
+
+function agregarAlCarrito(id) {
+    let productoAgregar = stockProductos.find((elemento) => elemento.id == id);
+
+    productoAgregar.cantidad = 1;
+
+    carritoDeCompras.push(productoAgregar);
+
+    console.log(carritoDeCompras);
 }
