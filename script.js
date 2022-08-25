@@ -50,13 +50,13 @@ botonFinalizar.onclick = () => {
 for (const producto of productos) {
     let container = document.createElement("div");
     container.setAttribute("class", "card-product");
-    container.innerHTML = ` <div class="img-container">
-                            <img src="${producto.foto}" alt="${producto.nombre}" class="img-product"/>
+    container.innerHTML = ` <div class="img-container, tituloProduct">
+                            <img src= "${producto.foto}" alt="${producto.nombre}" class="img-product, tituloProduct"/>
                             </div>
-                            <div class="info-producto">
+                            <div class="info-producto, card-text">
                             <p class="font">${producto.nombre}</p>
-                            <strong class="font">$${producto.precio}</strong>
-                            <button class="boton" id="${producto.id}"> Agregar al carrito </button>
+                            <strong class="font, card-text">$${producto.precio}</strong>
+                            <button class="boton, botonProd" id="${producto.id}"> Agregar al carrito </button>
                             </div>`;
     sectionProductos.appendChild(container);
     //Evento para que los productos se agreguen al carrito al hacer click en el boton
