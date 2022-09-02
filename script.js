@@ -39,11 +39,22 @@ botonFinalizar.innerText = "Finalizar compra";
 sectionCarrito.appendChild(botonFinalizar);
 botonFinalizar.setAttribute("class", "boton");
 
-//Le agrego un evento al boton para que muestre el precio final y despues se vacie el carrito
+let botonvaciarCarrito = document.createElement("button");
+botonvaciarCarrito.innerText = "Vaciar Carrito";
+sectionCarrito.appendChild(botonvaciarCarrito);
+botonvaciarCarrito.setAttribute("class", "boton");
+
+//Le agrego un evento a los botones para que muestre el precio final y despues se vacie el carrito
 botonFinalizar.onclick = () => {
     const precioFinal = montoTotalCompra.innerText;
     alert("Total a abonar: $" + precioFinal);
     vaciarCarrito();
+}
+
+botonvaciarCarrito.onclick = () => {
+  const precioFinal = montoTotalCompra.innerText;
+  alert("Total a abonar: $" + precioFinal);
+  vaciarCarrito();
 }
 
 //Renderizado de los productos en cards
@@ -80,8 +91,18 @@ function calcularTotalCarrito() {
 }
 
 function vaciarCarrito() {
-    montoTotalCompra.innerText = "0";
-    cantProductos.innerText = "0";
-    localStorage.clear();
-    carrito=[];
+  montoTotalCompra.innerText = "0";
+  cantProductos.innerText = "0";
+  localStorage.clear();
+  carrito=[];
 }
+
+ 
+Swal.fire({
+  position: 'top-end',
+  icon: 'info',
+  title: 'Entregamos en 48 hs hábiles',
+  showConfirmButton: true,
+  timer: 1500
+})
+
