@@ -106,6 +106,3 @@ Swal.fire({
   timer: 1500
 })
 
-const lista = document.getElementById("listado");
-fetch("./productos.json")
-.then(response => response.json())

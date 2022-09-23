@@ -1,0 +1,16 @@
+[
+
+    {
+        "nombre": "Sandwich de Atún",
+        "ingredientes" : "Pan Artesano, atún, palta, huevo duro, mayonesa y limón opcional",
+        "preparacion": "Tostar el pan a gusto, aparte abrir una lata de atún y mezclarlo con mayonesa y limón. Pisar una palta y condimentarla a gusto, y rallar o cortar un huevo en rodajas. Acomodar todo sobre una rebanada de pan y a disfrutar!! "
+    
+    },
+    
+    {
+        "nombre": "Sandwich de Lomo",
+        "ingredientes" : "Bifes de lomo, lechuga, tomate, queso, Sal y pimienta, cebolla",
+        "preparacion": "Cortar la carne en tiras y dorar en una sartén. Luego agregarle la cebolla y cocinar hasta que quede transparente. Sobre el pan, agregar los ingredientes más la preparación de la carne con la cebolla. Condimentar a gusto y a disfrutar!"
+    }
+    
+    ]
